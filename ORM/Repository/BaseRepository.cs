@@ -69,9 +69,9 @@ namespace ORM
                 var proPertyList = type.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public).ToList();
                 foreach (PropertyInfo property in proPertyList)
                 {
-                    if ((property.IsDefined(typeof(AttributeRequired), true) || property.IsDefined(typeof(AttributePrimaryKey), true)) && property.GetValue(t) == null) //非空验证 主键和被标记的字段不能为空
+                    if ((property.IsDefined(typeof(RequiredAttribute), true) || property.IsDefined(typeof(PrimaryKeyAttribute), true)) && property.GetValue(t) == null) //非空验证 主键和被标记的字段不能为空
                         return false;
-                    if (property.IsDefined(typeof(AttributeIdentity), true)) //移除自增字段
+                    if (property.IsDefined(typeof(IdentityAttribute), true)) //移除自增字段
                         proPertyList.Remove(property);
                     else
                         sb.Append($" {property}=@{property} ");
@@ -112,9 +112,9 @@ namespace ORM
                         var proPertyList = type.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public).ToList();
                         foreach (PropertyInfo property in proPertyList)
                         {
-                            if ((property.IsDefined(typeof(AttributeRequired), true) || property.IsDefined(typeof(AttributePrimaryKey), true)) && property.GetValue(t) == null) //非空验证 主键和被标记的字段不能为空
+                            if ((property.IsDefined(typeof(RequiredAttribute), true) || property.IsDefined(typeof(PrimaryKeyAttribute), true)) && property.GetValue(t) == null) //非空验证 主键和被标记的字段不能为空
                                 return false;
-                            if (property.IsDefined(typeof(AttributeIdentity), true)) //移除自增字段
+                            if (property.IsDefined(typeof(IdentityAttribute), true)) //移除自增字段
                                 proPertyList.Remove(property);
                             else
                                 sb.Append($" {property}=@{property} ");
@@ -151,9 +151,9 @@ namespace ORM
                 var proPertyList = type.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public).ToList();
                 foreach (PropertyInfo property in proPertyList)
                 {
-                    if ((property.IsDefined(typeof(AttributeRequired), true) || property.IsDefined(typeof(AttributePrimaryKey), true)) && property.GetValue(t) == null) //非空验证 主键和被标记的字段不能为空
+                    if ((property.IsDefined(typeof(RequiredAttribute), true) || property.IsDefined(typeof(PrimaryKeyAttribute), true)) && property.GetValue(t) == null) //非空验证 主键和被标记的字段不能为空
                         return false;
-                    if (property.IsDefined(typeof(AttributeIdentity), true)) //移除自增字段
+                    if (property.IsDefined(typeof(IdentityAttribute), true)) //移除自增字段
                         proPertyList.Remove(property);
                 }
                 sb.Append($" ({string.Join(",", proPertyList.Select(p => $"{p.GetColumnMappingName()}"))})");
@@ -194,9 +194,9 @@ namespace ORM
                         var proPertyList = type.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public).ToList();
                         foreach (PropertyInfo property in proPertyList)
                         {
-                            if ((property.IsDefined(typeof(AttributeRequired), true) || property.IsDefined(typeof(AttributePrimaryKey), true)) && property.GetValue(t) == null) //非空验证 主键和被标记的字段不能为空
+                            if ((property.IsDefined(typeof(RequiredAttribute), true) || property.IsDefined(typeof(PrimaryKeyAttribute), true)) && property.GetValue(t) == null) //非空验证 主键和被标记的字段不能为空
                                 return false;
-                            if (property.IsDefined(typeof(AttributeIdentity), true)) //移除自增字段
+                            if (property.IsDefined(typeof(IdentityAttribute), true)) //移除自增字段
                                 proPertyList.Remove(property);
                         }
                         sb.Append($" ({string.Join(",", proPertyList.Select(p => $"{p.GetColumnMappingName()}"))})");
